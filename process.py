@@ -85,7 +85,7 @@ def run(file, ffnn_path, cnn_path):
     print('temp dir is: '+temp_dir )
     if os.path.isdir(temp_dir ):
         print('deleting temp dir ...\n')
-        os.remove(temp_dir + '\\test.jpg')
+        os.remove(temp_dir + '/test.jpg')
         shutil.rmtree(temp_dir)
     else:
         print('temp dir does not exist...\n')
