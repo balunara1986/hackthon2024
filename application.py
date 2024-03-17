@@ -21,7 +21,7 @@ def analyze():
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
 
-    if file and file.filename.endswith('.wav'):
+    if file and (file.filename.endswith('.wav') or file.filename.endswith('.mp3')):
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename)
         ffnn_pred, cnn_pred = run(filename,'FFNN/train-03-17-2024/FFNN-03-17-2024.pt',
@@ -29,7 +29,7 @@ def analyze():
         voiceType = 'human'
         humanprob = round(float(ffnn_pred[1]) * 100, 2)
         aiprob = round(float(ffnn_pred[0]) * 100, 2)
-        if humanprob > 85:
+        if humanprob > 75:
             voiceType ='human'
         else:
             voiceType ='synthetic'
