@@ -27,8 +27,8 @@ def analyze():
         ffnn_pred, cnn_pred = run(filename,'FFNN/train-03-17-2024/FFNN-03-17-2024.pt',
             'CNN/train-03-17-2024/CNN-03-17-2024.pt')
         voiceType = 'human'
-        humanprob = round(float(ffnn_pred[1]) * 100, 2)
-        aiprob = round(float(ffnn_pred[0]) * 100, 2)
+        humanprob = round(float(ffnn_pred[1]), 2)
+        aiprob = round(float(ffnn_pred[0]), 2)
         if humanprob > 75:
             voiceType ='human'
         else:
